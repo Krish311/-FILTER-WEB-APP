@@ -1,5 +1,7 @@
+hornX=0;
+hornY=0;
 function preload() {
-    horns = loadImage('https://static.wikia.nocookie.net/roblox/images/a/aa/Abyssal_Horns.png/revision/latest?cb=20200723023126')
+Abyssal_horn = loadImage('https://i.postimg.cc/X7pXFGxk/Abyssal-Horns.webp');
 }
 
 function setup() {
@@ -13,12 +15,14 @@ function setup() {
 }
 
 function modelLoaded(){
-    console.log('poseNet Is Intialized');
+    console.log('poseNet Is Initialized');
 }
 
 
 function draw() {
     image(video, 0, 0, 300, 300)
+    circle(hornX, hornY, 20);
+    image(Abyssal_horn, hornX, noseY, 30, 30);
 }
 function take_snapshot() {
     save('myFilterImage.png');
@@ -29,7 +33,8 @@ function gotPoses(results)
     if(results.length > 0)
     {
         console.log(results);
-        console.log("nose x = " + results[0].pose.nose.x);
-        console.log("nose y = " + results[0].pose.nose.y);
+        noseX = results[0].pose.horn.x-15; 
+        noseY = results[0].pose.horn.y-15;
+
     }
 }
